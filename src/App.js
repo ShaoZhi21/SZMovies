@@ -189,7 +189,7 @@ const Movieinfo = ({favourites, setFavourites, setSearchQuery, setShowInfo, setI
       fetchReviews(info.media_type, info.id);
       fetchSimilar(info.media_type, info.id);
     }
-  }, [info.id]);
+  }, [info.media_type, info.id]);
 
   const fetchTrailer = async (media, id) => {
     try {
@@ -477,9 +477,9 @@ const HorizontalMovieScroll = ({setInfo, setShowInfo, text, trending }) => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>)}
-              <img id="scrollimage" className="popup" onMouseEnter={() => handleMouseEnter(index)} 
+              <img id="scrollimage" className="popup" onMouseEnter={() => handleMouseEnter(index)} alt="N/A" 
               onMouseLeave={handleMouseLeave}
-              onClick={() => {handleClick(index)}} src={`https://image.tmdb.org/t/p/w300/${x.poster_path}`} alt="N/A"/>
+              onClick={() => {handleClick(index)}} src={`https://image.tmdb.org/t/p/w300/${x.poster_path}`} />
               {x.vote_average !== 0 ? <h3 className={getRating(x.vote_average)} id="vote">{x.vote_average.toFixed(1)}</h3> : <h3 id="vote2">NA</h3>}
               {x.title && x.release_date ? <h3 className='horizontalmovietitle'>{sliceTitle(x.title)}<br />({x.release_date && x.release_date.slice(0,4)})</h3>
               : <h3 className='horizontalmovietitle'>{x.name}<br />({x.first_air_date && x.first_air_date.slice(0,4)})</h3>}
@@ -505,18 +505,6 @@ const FeaturedMain = ({setInfo, setShowInfo, trendingAll}) => {
       fetchTrailer(trendingAll[index].media_type, trendingAll[index].id)
     }
   }, [index, trendingAll]) 
-
-  const getRating = (rating) => {
-    if (rating > 7){
-      return "goodmovie"
-    } else if (rating > 5){
-      return "midmovie"
-    } else if (rating > 0){
-      return "badmovie"
-    } else {
-      return "nonemovie"
-    }
-  } 
 
   const fetchTrailer = async (media, id) => {
     try {
@@ -554,12 +542,6 @@ const FeaturedMain = ({setInfo, setShowInfo, trendingAll}) => {
     } else {
       setIndex(index - 1)
     }
-  }
-
-  const handleClick = (id) => {
-    window.scrollTo({top: 0, behavior: "instant"})
-    setShowInfo(1)
-    setInfo(trendingAll[id])
   }
 
   return (

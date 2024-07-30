@@ -55,7 +55,7 @@ app.get('/api/trending', async (req, res) => {
     const { type } = req.query;
     const apiKey = process.env.API_KEY; 
     let url = '';
-
+    
     switch (type) {
         case 'movie':
             url = 'https://api.themoviedb.org/3/trending/movie/week?language=en-US';
