@@ -28,7 +28,7 @@ const App = () => {
 
   const getNowPlaying = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/now-playing")
+      const response = await fetch("/api/now-playing")
       const data = await response.json()
       setNowPlaying(data.results)
     } catch(error){
@@ -38,7 +38,7 @@ const App = () => {
 
   const getUpcoming = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/upcoming')
+      const response = await fetch('/api/upcoming')
       const data = await response.json()
       setUpcoming(data.results)
     } catch (error) {
@@ -48,7 +48,7 @@ const App = () => {
 
   const getTrending = async (type) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/trending?type=${type}`);
+      const response = await fetch(`/api/trending?type=${type}`);
       if (!response.ok) {
         throw new Error('Failed to fetch trending movies');
       }
@@ -69,7 +69,7 @@ const App = () => {
 
   const getMovies = async (search) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/movies?search=${encodeURIComponent(search)}`);
+      const response = await fetch(`/api/movies?search=${encodeURIComponent(search)}`);
       if (!response.ok) {
         throw new Error('Failed to fetch movies');
       }
@@ -193,7 +193,7 @@ const Movieinfo = ({favourites, setFavourites, setSearchQuery, setShowInfo, setI
 
   const fetchTrailer = async (media, id) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/trailer?media=${media}&id=${id}`);
+      const response = await fetch(`/api/trailer?media=${media}&id=${id}`);
       const data = await response.json();
       const trailer = data.results.find(video => video.type === "Trailer");
       if (trailer) {
@@ -211,7 +211,7 @@ const Movieinfo = ({favourites, setFavourites, setSearchQuery, setShowInfo, setI
 
   const fetchCast = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/cast?id=${id}`)
+      const response = await fetch(`/api/cast?id=${id}`)
       const data = await response.json()
       setCast(data.cast.slice(0,10))
     } catch (error) {
@@ -221,7 +221,7 @@ const Movieinfo = ({favourites, setFavourites, setSearchQuery, setShowInfo, setI
 
   const fetchReviews = async (media, id) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/reviews?media=${media}&id=${id}`)
+      const response = await fetch(`/api/reviews?media=${media}&id=${id}`)
       const data = await response.json()
       setUserReviews(data.results)
     } catch (error){
@@ -231,7 +231,7 @@ const Movieinfo = ({favourites, setFavourites, setSearchQuery, setShowInfo, setI
 
   const fetchSimilar = async (media, id) => {
     try{
-      const response = await fetch(`http://localhost:3001/api/similar?media=${media}&id=${id}`)
+      const response = await fetch(`/api/similar?media=${media}&id=${id}`)
       const data = await response.json()
       setSimilar(data.results)
     } catch (error){
@@ -420,7 +420,7 @@ const HorizontalMovieScroll = ({setInfo, setShowInfo, text, trending }) => {
   
   const fetchTrailer = async (media, id) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/hovertrailer?media=${media}&id=${id}`);
+      const response = await fetch(`/api/hovertrailer?media=${media}&id=${id}`);
       const data = await response.json();
       const trailer = data.results.find(video => video.type === "Trailer");
       
@@ -508,7 +508,7 @@ const FeaturedMain = ({setInfo, setShowInfo, trendingAll}) => {
 
   const fetchTrailer = async (media, id) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/featuredtrailer?media=${media}&id=${id}`);
+      const response = await fetch(`/api/featuredtrailer?media=${media}&id=${id}`);
       const data = await response.json();
       const trailer = data.results.find(video => video.type === "Trailer");
       
