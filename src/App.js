@@ -38,7 +38,8 @@ const App = () => {
 
   const getUpcoming = async () => {
     try {
-      const response = await fetch('/api/upcoming')
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(`${apiUrl}/api/upcoming`)
       const data = await response.json()
       setUpcoming(data.results)
     } catch (error) {
