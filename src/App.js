@@ -28,7 +28,8 @@ const App = () => {
 
   const getNowPlaying = async () => {
     try {
-      const response = await fetch("/api/now-playing")
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(`${apiUrl}/api/now-playing`)
       const data = await response.json()
       setNowPlaying(data.results)
     } catch(error){
@@ -49,7 +50,8 @@ const App = () => {
 
   const getTrending = async (type) => {
     try {
-      const response = await fetch(`/api/trending?type=${type}`);
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(`${apiUrl}/api/trending?type=${type}`);
       if (!response.ok) {
         throw new Error('Failed to fetch trending movies');
       }
@@ -70,7 +72,8 @@ const App = () => {
 
   const getMovies = async (search) => {
     try {
-      const response = await fetch(`/api/movies?search=${encodeURIComponent(search)}`);
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(`${apiUrl}/api/movies?search=${encodeURIComponent(search)}`);
       if (!response.ok) {
         throw new Error('Failed to fetch movies');
       }
@@ -194,7 +197,8 @@ const Movieinfo = ({favourites, setFavourites, setSearchQuery, setShowInfo, setI
 
   const fetchTrailer = async (media, id) => {
     try {
-      const response = await fetch(`/api/trailer?media=${media}&id=${id}`);
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(`${apiUrl}/api/trailer?media=${media}&id=${id}`);
       const data = await response.json();
       const trailer = data.results.find(video => video.type === "Trailer");
       if (trailer) {
@@ -212,7 +216,8 @@ const Movieinfo = ({favourites, setFavourites, setSearchQuery, setShowInfo, setI
 
   const fetchCast = async (id) => {
     try {
-      const response = await fetch(`/api/cast?id=${id}`)
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(`${apiUrl}/api/cast?id=${id}`)
       const data = await response.json()
       setCast(data.cast.slice(0,10))
     } catch (error) {
@@ -222,7 +227,8 @@ const Movieinfo = ({favourites, setFavourites, setSearchQuery, setShowInfo, setI
 
   const fetchReviews = async (media, id) => {
     try {
-      const response = await fetch(`/api/reviews?media=${media}&id=${id}`)
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(`${apiUrl}/api/reviews?media=${media}&id=${id}`)
       const data = await response.json()
       setUserReviews(data.results)
     } catch (error){
@@ -232,7 +238,8 @@ const Movieinfo = ({favourites, setFavourites, setSearchQuery, setShowInfo, setI
 
   const fetchSimilar = async (media, id) => {
     try{
-      const response = await fetch(`/api/similar?media=${media}&id=${id}`)
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(`${apiUrl}/api/similar?media=${media}&id=${id}`)
       const data = await response.json()
       setSimilar(data.results)
     } catch (error){
@@ -421,7 +428,8 @@ const HorizontalMovieScroll = ({setInfo, setShowInfo, text, trending }) => {
   
   const fetchTrailer = async (media, id) => {
     try {
-      const response = await fetch(`/api/hovertrailer?media=${media}&id=${id}`);
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(`${apiUrl}/api/hovertrailer?media=${media}&id=${id}`);
       const data = await response.json();
       const trailer = data.results.find(video => video.type === "Trailer");
       
@@ -509,7 +517,8 @@ const FeaturedMain = ({setInfo, setShowInfo, trendingAll}) => {
 
   const fetchTrailer = async (media, id) => {
     try {
-      const response = await fetch(`/api/featuredtrailer?media=${media}&id=${id}`);
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(`${apiUrl}/api/featuredtrailer?media=${media}&id=${id}`);
       const data = await response.json();
       const trailer = data.results.find(video => video.type === "Trailer");
       
