@@ -10,6 +10,10 @@ On each movie or tv show page, it includes the title, release date, a brief sypn
 
 Users are also able to favourite movies which will be added to a favourites catalogue on the homepage.
 
+This React application has been deployed to Netlify with the backend hosted on Vercel. 
+
+Link to SZMovies: https://szmovies.netlify.app
+
 ## Available Scripts
 
 In the project directory, you can run:
