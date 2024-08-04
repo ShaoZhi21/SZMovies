@@ -14,6 +14,8 @@ This React application has been deployed to Netlify with the backend hosted on V
 
 Link to SZMovies: https://szmovies.netlify.app
 
+Languages Used: Javascript (React.js, Node.js, Express.js), HTML, CSS
+
 ## Available Scripts
 
 In the project directory, you can run:
