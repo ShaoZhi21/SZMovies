@@ -6,7 +6,7 @@ In the homepage, users will be able to watch movie trailers of all trending movi
 
 Users are able to search for movies of their choice, as well as filter their search by rating and by release date.
 
-On each movie or TV show page, it includes the title, release date, a brief sypnosis, poster, trailer, cast, user reviews as well as a catalogue of suggested similar movies.
+On each movie or TV show page, it includes the title, release date, a brief synopsis, poster, trailer, cast, user reviews as well as a catalogue of suggested similar movies.
 
 Users are also able to favourite movies which will be added to a favourites catalogue on the homepage.
 
